@@ -16,6 +16,13 @@ app.use(cors({
     origin:process.env.CORS_ORIGIN,
     credentials:true
 }))
+app.options('*', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', process.env.CORS_ORIGIN);
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.status(200).end();
+  });
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
