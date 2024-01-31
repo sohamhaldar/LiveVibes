@@ -89,7 +89,8 @@ const loginUser=async(req,res,next)=>{
         const accessToken=await user.generateAccessToken();
         const loggedInUser=await User.findById(user._id).select("-password -refreshToken");
         const options={
-            // httpOnly:true,
+            origin:process.env.CORS_ORIGIN,
+            httpOnly:true,
             secure:true,
         }
         return res.status(200).cookie("accessToken",accessToken,options).json(new ApiResponse(200,{
