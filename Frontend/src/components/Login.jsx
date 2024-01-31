@@ -4,10 +4,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import useStore from '../store/store.js';
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 const Login=()=>{
     const [userName,setUserName]=useState('');
     const [password,setPassword]=useState('');
+    const [cookies, setCookie] = useCookies(['accessToken']);
     const navigate=useNavigate();
     const saveUsername=useStore((state)=>state.setUserName);
     const saveAvatar=useStore((state)=>state.setUserAvatar);
@@ -29,7 +31,8 @@ const Login=()=>{
             }
             const {data}=await axios.post(`${import.meta.env.VITE_SERVER_LINK}/user/login`,{ username:userName,password},{withCredentials:true});
             const response=data.data;
-            console.log(response);
+            console.log(response.accessToken);
+            setCookie('accessToken',response.accessToken, { path: "/" });
             saveUsername(response.user.username);
             saveAvatar(response.user.avatar);
 

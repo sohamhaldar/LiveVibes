@@ -12,7 +12,7 @@ router.route("/register").post(
     )
 router.route('/login').post(loginUser);
 router.route('/getStreams').get(streamList);
-router.route('/start').post(verifyJWT,upload.single('thumbnail'),broadcast);
+router.route('/start').post(upload.single('thumbnail'),broadcast);
 router.route('/watch').post(watch);
 router.route('/ended').post(streamEnded);
 

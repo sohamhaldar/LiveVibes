@@ -8,6 +8,7 @@ const store = (set) => ({
   user_avatar:'',
   user_name:'',
   currentStream:{},
+  user_id:'',
   setCurrentStream: (stream) => {
     set(() => ({
       currentStream: stream,
@@ -26,6 +27,11 @@ const store = (set) => ({
   setStreamId:(id)=>{
     set(()=>({
       selectedStreamId : id,
+    }))
+  },
+  setUserId:(id)=>{
+    set(()=>({
+      user_id : id,
     }))
   },
   setUserName:(name)=>{

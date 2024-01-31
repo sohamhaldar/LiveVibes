@@ -18,6 +18,7 @@ import plus_icon from '../assets/plus_icon.png'
 const StreamerPage=()=>{
     const addStream = useStore((state) => state.addStream);
     const store = useStore((state) => state.localStream);
+    const user_id=useStore((state)=>state.user_id);
     const [streamId,setStreamId]=useState('');
     const username=useStore((state)=>state.user_name);
     const userAvatar=useStore((state)=>state.user_avatar);
@@ -217,6 +218,7 @@ const StreamerPage=()=>{
             formData.append('thumbnail',thumbnail);
             formData.append('title',title);
             formData.append('peer_number',2);
+            formData.append('user_id',user_id);
             console.log(formData);
 
             const {data } = await axios.post(`${import.meta.env.VITE_SERVER_LINK}/user/start`, formData,{withCredentials:true}); 
@@ -298,6 +300,7 @@ const StreamerPage=()=>{
             formData.append('thumbnail',thumbnail);
             formData.append('title',title);
             formData.append('peer_number',1);
+            formData.append('user_id',user_id);
             console.log(formData);
             const {data } = await axios.post(`${import.meta.env.VITE_SERVER_LINK}/user/start`, formData,{withCredentials:true}); 
             console.log(data);

@@ -7,6 +7,7 @@ import webrtc from 'wrtc';
 import { Stream } from "../models/stream.model.js";
 
 
+
 let stream;
 let webCamstreamMap=new Map();
 let screenSharestreamMap=new Map();
@@ -163,7 +164,7 @@ const watch=async(req,res,next)=>{
 
 const broadcast=async(req,res,next)=>{ 
     try{
-        const {webCamsdp,screenSharesdp,title,peer_number,sdp}=req.body;
+        const {webCamsdp,screenSharesdp,title,peer_number,sdp,user_id}=req.body;
         console.log(req.body);
         
         if(peer_number==2){
@@ -195,7 +196,7 @@ const broadcast=async(req,res,next)=>{
         }
         const streamInstance=await Stream.create({  
             title:title,
-            owner: req.user._id,
+            owner: user_id,
             thumbnail:thumbnail?.url
         });
         const streamId=streamInstance._id;
@@ -256,7 +257,7 @@ const broadcast=async(req,res,next)=>{
         }
         const streamInstance=await Stream.create({  
             title:title,
-            owner: req.user._id,
+            owner: user_id,
             thumbnail:thumbnail?.url
         });
         const streamId=streamInstance._id;
