@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 
 export const verifyJWT=async(req,_,next)=>{// we can write _ in place of res if res is not used 
     try {
+        console.log("hello")
         console.log(req.cookies);
         const token=req.cookies?.accessToken|| req.header("Authorization")?.replace("Bearer","");
         if(!token){
@@ -11,7 +12,7 @@ export const verifyJWT=async(req,_,next)=>{// we can write _ in place of res if 
         }
     
         const decodedToken=jwt.verify(token,process.env.ACCESS_TOKEN_SECRET);
-        const user=await User.findById(decodedToken?._id).select("-password -refreshToken");
+        const user=await User.findById(decodedToken?._id).select("-password");
     
         if(!user){
             throw new ApiError(401,"Invalid Access token");
