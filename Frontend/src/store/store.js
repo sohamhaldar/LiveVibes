@@ -46,6 +46,8 @@ const store = (set) => ({
   },
 });
 
-const useStore = create(devtools(store));
+const useStore = create(devtools(persist(store, {
+  name: "store",
+})));
  
 export default useStore;

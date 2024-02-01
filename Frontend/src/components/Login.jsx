@@ -13,6 +13,7 @@ const Login=()=>{
     const navigate=useNavigate();
     const saveUsername=useStore((state)=>state.setUserName);
     const saveAvatar=useStore((state)=>state.setUserAvatar);
+    const saveuserId=useStore((state)=>state.setUserId);
     const goToSignIn=()=>{
         navigate('/signin')
     }
@@ -31,10 +32,11 @@ const Login=()=>{
             }
             const {data}=await axios.post(`${import.meta.env.VITE_SERVER_LINK}/user/login`,{ username:userName,password},{withCredentials:true});
             const response=data.data;
-            console.log(response.accessToken);
+            console.log(response);
             setCookie('accessToken',response.accessToken, { path: "/" });
             saveUsername(response.user.username);
             saveAvatar(response.user.avatar);
+            saveuserId(response.user._id);
 
             toast.success("Logged in succesfully",{
                 autoClose: 3000,
