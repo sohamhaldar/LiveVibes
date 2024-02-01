@@ -165,7 +165,7 @@ const watch=async(req,res,next)=>{
 const broadcast=async(req,res,next)=>{ 
     try{
         const {webCamsdp,screenSharesdp,title,peer_number,sdp,user_id}=req.body;
-        console.log(req.body);
+        console.log(user_id);
         
         if(peer_number==2){
         const webCampeer = new webrtc.RTCPeerConnection({
