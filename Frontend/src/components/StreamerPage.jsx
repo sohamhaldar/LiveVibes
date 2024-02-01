@@ -262,7 +262,13 @@ const StreamerPage=()=>{
             setStreamId(data.stringId);
             socket.emit("join",data.stringId);
         }else{
-            const peer = new RTCPeerConnection();
+            const peer = new RTCPeerConnection({
+                iceServers: [
+                    {
+                        urls: "stun:stun.stunprotocol.org"
+                    }
+                ]
+            });
             peer.onicecandidate = (event) => {
                 if (event.candidate === null) {
                   // ICE candidate gathering is complete

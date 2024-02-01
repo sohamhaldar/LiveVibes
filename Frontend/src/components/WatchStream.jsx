@@ -165,14 +165,6 @@ const WatchStream=()=>{
                                 </div>
                             ))
                         }
-                         {/* <div className='max-w-[90%] bg-white rounded-md inline-block w-[90%] overflow-x-auto m-1'>
-                                <div className='h-7 w-full flex bg-slate-300'>
-                                    <img src='http://res.cloudinary.com/dnyi9ceiy/image/upload/v1706636974/qrg0cdr6w99rzz7pqqf2.jpg' className='m-1'/>
-                                    <p className='m-1'>Soham Haldar</p>
-                                </div>
-                                <div>Hello guys i am  nnnnnnnnnnnnnnn nmnmmnm kikiki lolol</div>
-                                
-                            </div> */}
                         </div>
                         <div className='m-1 w-[90%]'>
                             <input className='w-[82%] p-2 rounded-md border-solid border-2 border-sky-400' type="text" placeholder='Write here' value={msg} onChange={(e)=>setMsg(e.target.value)} />
