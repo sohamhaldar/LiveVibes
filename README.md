@@ -1,4 +1,4 @@
-<center><img src="./Frontend/src/assets/Logo.png" alt="Your Icon" width="300" height="200"> </center>
+<div align="center""><img src="./Frontend/src/assets/Logo.png" alt="Your Icon" width="300" height="200"> </div>
 
 
 
